@@ -1,0 +1,37 @@
+{
+  "total_registros": 1000,
+  "ciudades_cubiertas": 8,
+  "rango_fechas": {
+    "inicio": "2022-01-04",
+    "fin": "2025-12-31"
+  },
+  "nivel_ruido": {
+    "minimo": 30.0,
+    "maximo": 102.3,
+    "promedio": 60.93,
+    "mediana": 59.75,
+    "std": 14.34
+  },
+  "pct_supera_normativa": 42.1,
+  "pct_hora_pico": 26.6,
+  "distribucion_clasificacion": {
+    "Moderado": 316,
+    "Alto": 247,
+    "Bajo": 236,
+    "Crítico": 201
+  },
+  "distribucion_fuente": {
+    "Tráfico_Vehicular": 346,
+    "Transporte_Público": 217,
+    "Comercio": 156,
+    "Construcción": 108,
+    "Eventos": 71,
+    "Industrial": 59,
+    "Mixta": 43
+  },
+  "distribucion_sensor": {
+    "Sensor_Fijo": 601,
+    "Sensor_Móvil": 265,
+    "Sensor_Ciudadano": 134
+  }
+}

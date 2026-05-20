@@ -1,0 +1,90 @@
+{
+  "target_map": {
+    "Bajo": 0,
+    "Moderado": 1,
+    "Alto": 2,
+    "Crítico": 3
+  },
+  "target_order": [
+    "Bajo",
+    "Moderado",
+    "Alto",
+    "Crítico"
+  ],
+  "categorical_encodings": {
+    "Ciudad": {
+      "Barranquilla": 0,
+      "Bogotá": 1,
+      "Bucaramanga": 2,
+      "Cali": 3,
+      "Cartagena": 4,
+      "Manizales": 5,
+      "Medellín": 6,
+      "Pereira": 7
+    },
+    "Tipo_Zona": {
+      "Comercial": 0,
+      "Educativa": 1,
+      "Hospitalaria": 2,
+      "Industrial": 3,
+      "Mixta": 4,
+      "Residencial": 5
+    },
+    "Tipo_Sensor": {
+      "Sensor_Ciudadano": 0,
+      "Sensor_Fijo": 1,
+      "Sensor_Móvil": 2
+    },
+    "Fuente_Principal_Ruido": {
+      "Comercio": 0,
+      "Construcción": 1,
+      "Eventos": 2,
+      "Industrial": 3,
+      "Mixta": 4,
+      "Transporte_Público": 5,
+      "Tráfico_Vehicular": 6
+    },
+    "Condicion_Climatica": {
+      "Despejado": 0,
+      "Lluvioso": 1,
+      "Nublado": 2,
+      "Ventoso": 3
+    },
+    "Franja_Horaria": {
+      "Madrugada": 0,
+      "Mañana": 1,
+      "Noche": 2,
+      "Tarde": 3
+    }
+  },
+  "numeric_features_scaled": [
+    "Nivel_Ruido_dB",
+    "Indice_Movilidad",
+    "Flujo_Vehicular_veh_h",
+    "Velocidad_Promedio_kmh",
+    "Saturacion_Transporte",
+    "Calidad_Señal_Sensor",
+    "Indice_Congestion",
+    "Ratio_Ruido_Velocidad"
+  ],
+  "scaler_min": [
+    30.0,
+    0.0,
+    0.0,
+    11.3,
+    0.0,
+    0.7,
+    0.0,
+    0.44
+  ],
+  "scaler_max": [
+    102.3,
+    95.0,
+    1416.0,
+    75.1,
+    1.0,
+    1.0,
+    0.98,
+    7.4248
+  ]
+}

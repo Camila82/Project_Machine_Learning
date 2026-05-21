@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Análisis de Ruido Urbano - CRISP-ML</title>
+    <title>Urban Noise Analysis System - CRISP-ML</title>
     <style>
         /* ==========================================================================
-           1. VARIABLES DE DISEÑO (SYSTEM TOKENS)
+           1. DESIGN VARIABLES (SYSTEM TOKENS)
            ========================================================================== */
         :root {
             --bg-principal: #121214;
@@ -25,7 +25,7 @@
         }
 
         /* ==========================================================================
-           2. ESTILOS BASE Y RESET
+           2. BASE STYLES AND RESET
            ========================================================================== */
         * {
             margin: 0;
@@ -65,7 +65,7 @@
         }
 
         /* ==========================================================================
-           3. MENÚ LATERAL (SIDEBAR)
+           3. SIDEBAR MENU
            ========================================================================== */
         aside {
             width: var(--sidebar-width);
@@ -143,7 +143,7 @@
         }
 
         /* ==========================================================================
-           4. ÁREA DE CONTENIDO PRINCIPAL & HEADER
+           4. MAIN CONTENT AREA & HEADER
            ========================================================================== */
         main {
             margin-left: var(--sidebar-width);
@@ -197,7 +197,7 @@
         }
 
         /* ==========================================================================
-           5. COMPONENTES REUTILIZABLES (SECCIONES Y TARJETAS)
+           5. REUSABLE COMPONENTS (SECTIONS AND CARDS)
            ========================================================================== */
         .section-container {
             margin-bottom: 60px;
@@ -287,7 +287,7 @@
             color: var(--text-secondary);
         }
 
-        /* Listas internas en tarjetas */
+        /* Inner lists in cards */
         .card-list {
             list-style: none;
             margin-top: 8px;
@@ -320,7 +320,7 @@
         }
 
         /* ==========================================================================
-           6. COMPONENTES ESPECÍFICOS: TABLAS ESTILIZADAS (FASE 2)
+           6. SPECIFIC COMPONENTS: STYLIZED TABLES (PHASE 2)
            ========================================================================== */
         .table-container {
             width: 100%;
@@ -414,44 +414,44 @@
 
     <aside>
         <div class="sidebar-brand">
-            <h2>Analítica Urbana</h2>
-            <span>Framework CRISP-ML</span>
+            <h2>Urban Analytics</h2>
+            <span>CRISP-ML Framework</span>
         </div>
         <ul class="sidebar-menu">
             <li>
                 <a href="#fase1">
-                    <span class="phase-num">Fase 01</span>
-                    <span class="phase-name">Entendimiento del Negocio</span>
+                    <span class="phase-num">Phase 01</span>
+                    <span class="phase-name">Business Understanding</span>
                 </a>
             </li>
             <li>
                 <a href="#fase2">
-                    <span class="phase-num">Fase 02</span>
-                    <span class="phase-name">Ingeniería de Datos</span>
+                    <span class="phase-num">Phase 02</span>
+                    <span class="phase-name">Data Engineering</span>
                 </a>
             </li>
             <li>
                 <a href="#fase3">
-                    <span class="phase-num">Fase 03</span>
-                    <span class="phase-name">Ingeniería del Modelo</span>
+                    <span class="phase-num">Phase 03</span>
+                    <span class="phase-name">Model Engineering</span>
                 </a>
             </li>
             <li>
                 <a href="#fase4">
-                    <span class="phase-num">Fase 04</span>
-                    <span class="phase-name">Evaluación del Modelo</span>
+                    <span class="phase-num">Phase 04</span>
+                    <span class="phase-name">Model Evaluation</span>
                 </a>
             </li>
             <li>
                 <a href="#fase5">
-                    <span class="phase-num">Fase 05</span>
-                    <span class="phase-name">Despliegue de la Solución</span>
+                    <span class="phase-num">Phase 05</span>
+                    <span class="phase-name">Solution Deployment</span>
                 </a>
             </li>
             <li>
                 <a href="#fase6">
-                    <span class="phase-num">Fase 06</span>
-                    <span class="phase-name">Monitoreo y Mantenimiento</span>
+                    <span class="phase-num">Phase 06</span>
+                    <span class="phase-name">Monitoring & Maintenance</span>
                 </a>
             </li>
         </ul>
@@ -460,75 +460,75 @@
     <main>
         <header>
             <div class="header-title">
-                <h1>Sistema de Análisis de Ruido Urbano en Ciudades Colombianas</h1>
-                <p>Modelado predictivo y segmentación geoespacial mediante sensores abiertos e indicadores de movilidad.</p>
+                <h1>Urban Noise Analysis System in Colombian Cities</h1>
+                <p>Predictive modeling and geospatial segmentation using open sensors and mobility indicators.</p>
             </div>
             <div class="header-meta">
-                <div class="author-label">Investigador Principal</div>
+                <div class="author-label">Principal Investigator</div>
                 <div class="author-name">Steven Naranjo</div>
             </div>
         </header>
 
         <section id="fase1" class="section-container">
             <div class="section-header">
-                <h2><span>01 /</span> Entendimiento del Negocio y los Datos</h2>
-                <span class="badge-status">Completado</span>
+                <h2><span>01 /</span> Business and Data Understanding</h2>
+                <span class="badge-status">Completed</span>
             </div>
             <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem; line-height: 1.6;">
-                Esta fase inicial establece la alineación entre las necesidades de ordenamiento territorial urbano y los objetivos de analítica avanzada[cite: 96, 105, 106]. Permite traducir las problemáticas de contaminación ambiental y saturación vial en metas medibles de Machine Learning[cite: 98].
+                This initial phase establishes the alignment between urban planning needs and advanced analytics objectives. It enables translating environmental pollution and road saturation issues into measurable Machine Learning goals.
             </p>
             <div class="grid-layout">
                 <div class="card">
-                    <h3>Objetivos de Negocio</h3>
-                    <p>Evaluar el cumplimiento normativo de la <strong>Resolución 0627 de 2006</strong> (Ministerio de Ambiente), mapeando los niveles máximos permisibles de ruido por zonas de uso (residencial, comercial e industrial) e identificando factores de movilidad que actúan como inductores del impacto acústico.</p>
+                    <h3>Business Objectives</h3>
+                    <p>Evaluate compliance with <strong>Resolution 0627 of 2006</strong> (Ministry of Environment), mapping the maximum permissible noise levels by use zones (residential, commercial, and industrial) and identifying mobility factors that act as drivers of acoustic impact.</p>
                 </div>
                 <div class="card">
-                    <h3>Preguntas Clave</h3>
+                    <h3>Key Questions</h3>
                     <ul class="card-list">
-                        <li>¿Cuál es el grado de correlación estadística entre la densidad del flujo vehicular de transporte masivo y el exceso de decibelios ($dB$)?</li>
-                        <li>¿Es posible predecir picos de contaminación acústica con 4 horas de anticipación a partir de variables micro-viales?</li>
+                        <li>What is the degree of statistical correlation between mass transit vehicle flow density and excess decibels ($dB$)?</li>
+                        <li>Is it possible to predict noise pollution peaks 4 hours in advance using micro-road variables?</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <h3>Evaluación de Datos Abiertos</h3>
-                    <p>Análisis de suficiencia y viabilidad técnica de catálogos gubernamentales de Colombia (datos.gov.co)[cite: 101, 104], determinando la consistencia temporal, frecuencia de actualización y presencia de vacíos en las series históricas de estaciones de monitoreo ambiental urbano.</p>
+                    <h3>Open Data Assessment</h3>
+                    <p>Analysis of sufficiency and technical feasibility of Colombian government open data catalogs (datos.gov.co), determining temporal consistency, update frequency, and the presence of gaps in historical series from urban environmental monitoring stations.</p>
                 </div>
             </div>
         </section>
 
         <section id="fase2" class="section-container">
             <div class="section-header">
-                <h2><span>02 /</span> Ingeniería de Datos</h2>
-                <span class="badge-status">Completado</span>
+                <h2><span>02 /</span> Data Engineering</h2>
+                <span class="badge-status">Completed</span>
             </div>
             <p style="color: var(--text-secondary); margin-bottom: 2px; font-size: 0.95rem; line-height: 1.6;">
-                Construcción de los pipelines automatizados de extracción, limpieza profunda y estructuración de los datasets multivariables[cite: 107, 116, 117]. Todo el procesamiento se documenta minuciosamente para garantizar la reproducibilidad científica[cite: 114, 118].
+                Construction of automated pipelines for extraction, deep cleaning, and structuring of multivariable datasets. All processing is thoroughly documented to guarantee scientific reproducibility.
             </p>
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
-                            <th>Fuente / Catálogo</th>
-                            <th>Variables Extraídas</th>
-                            <th>Frecuencia</th>
-                            <th>Procesamiento Realizado (Pipeline)</th>
-                            <th>Estado</th>
+                            <th>Source / Catalog</th>
+                            <th>Extracted Variables</th>
+                            <th>Frequency</th>
+                            <th>Processing Performed (Pipeline)</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Sensores Ambientales Abiertos</strong><br><small>Redes de Monitoreo de Ruido</small></td>
-                            <td>Nivel de presión sonora continuo equivalente ($L_{Aeq,T}$), picos máximos ($dB$), coordenadas geográficas.</td>
-                            <td>Horaria</td>
-                            <td>Imputación de valores nulos mediante interpolación lineal determinista. Remoción de ruido estadístico por fallas eléctricas en el nodo.</td>
-                            <td><span class="tag-pill success">Procesado</span></td>
+                            <td><strong>Open Environmental Sensors</strong><br><small>Noise Monitoring Networks</small></td>
+                            <td>Equivalent continuous sound pressure level ($L_{Aeq,T}$), maximum peaks ($dB$), geographic coordinates.</td>
+                            <td>Hourly</td>
+                            <td>Imputation of null values using deterministic linear interpolation. Removal of statistical noise due to electrical failures in the node.</td>
+                            <td><span class="tag-pill success">Processed</span></td>
                         </tr>
                         <tr>
-                            <td><strong>Indicadores de Movilidad</strong><br><small>APIs de Tránsito / Datos Abiertos</small></td>
-                            <td>Volumen vehicular estimado, velocidad promedio de flujo, tipos de vehículo (pesado/particular), índices de congestión.</td>
-                            <td>Cada 15 min</td>
-                            <td>Agregación temporal para sincronización con sensores acústicos. Normalización MinMax y extracción de características estacionales (Hora, Día de la semana).</td>
-                            <td><span class="tag-pill success">Procesado</span></td>
+                            <td><strong>Mobility Indicators</strong><br><small>Traffic APIs / Open Data</small></td>
+                            <td>Estimated vehicle volume, average flow speed, vehicle types (heavy/private), congestion indices.</td>
+                            <td>Every 15 min</td>
+                            <td>Temporal aggregation for synchronization with acoustic sensors. MinMax normalization and extraction of seasonal features (Hour, Day of the week).</td>
+                            <td><span class="tag-pill success">Processed</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -537,56 +537,56 @@
 
         <section id="fase3" class="section-container">
             <div class="section-header">
-                <h2><span>03 /</span> Ingeniería del Modelo</h2>
-                <span class="badge-status">Completado</span>
+                <h2><span>03 /</span> Model Engineering</h2>
+                <span class="badge-status">Completed</span>
             </div>
             <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem; line-height: 1.6;">
-                Configuración y entrenamiento de arquitecturas matemáticas específicas para el problema de negocio[cite: 119, 126, 129]. Se segmentan los enfoques en modelos supervisados predictivos y modelos no supervisados de categorización territorial[cite: 120, 121].
+                Configuration and training of specific mathematical architectures for the business problem. Approaches are segmented into predictive supervised models and unsupervised territorial categorization models.
             </p>
             <div class="grid-layout">
                 <div class="card">
-                    <h3>Selección de Algoritmos</h3>
-                    <p><strong>Enfoque Supervisado:</strong> Regresión para la estimación y proyección del nivel de ruido en puntos ciegos de sensores[cite: 121].</p>
-                    <p><strong>Enfoque No Supervisado:</strong> Agrupamiento espacial por K-Means para la caracterización de macro-zonas críticas de contaminación acústica urbana.</p>
+                    <h3>Algorithm Selection</h3>
+                    <p><strong>Supervised Approach:</strong> Regression for the estimation and projection of noise levels in sensor blind spots.</p>
+                    <p><strong>Unsupervised Approach:</strong> Spatial clustering by K-Means for the characterization of critical macro-zones of urban noise pollution.</p>
                 </div>
                 <div class="card">
-                    <h3>Estrategia de Entrenamiento</h3>
-                    <p>Partición de los datos en subconjuntos independientes de entrenamiento y prueba mediante técnicas de validación cruzada temporal (Time Series Split)[cite: 122, 123]. Integración del conocimiento empírico de ingenieros viales y ambientales para ajustar la dimensionalidad funcional del modelo[cite: 130].</p>
+                    <h3>Training Strategy</h3>
+                    <p>Partition of data into independent training and test subsets using temporal cross-validation techniques (Time Series Split). Integration of empirical knowledge from road and environmental engineers to adjust the model's functional dimensionality.</p>
                 </div>
                 <div class="card">
-                    <h3>Ajuste de Hiperparámetros</h3>
-                    <p>Optimización mediante búsquedas GridSearch iterativas enfocadas en refinar las tasas de aprendizaje, coeficientes de regularización Ridge/Lasso para mitigar el sobreajuste, y la inicialización de centroides óptimos basados en distancias euclidianas robustas[cite: 128].</p>
+                    <h3>Hyperparameter Tuning</h3>
+                    <p>Optimization through iterative GridSearch runs focused on refining learning rates, Ridge/Lasso regularization coefficients to mitigate overfitting, and optimal centroid initialization based on robust Euclidean distances.</p>
                 </div>
             </div>
         </section>
 
         <section id="fase4" class="section-container">
             <div class="section-header">
-                <h2><span>04 /</span> Evaluación del Modelo</h2>
-                <span class="badge-status">Completado</span>
+                <h2><span>04 /</span> Model Evaluation</h2>
+                <span class="badge-status">Completed</span>
             </div>
             <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem; line-height: 1.6;">
-                Fase analítica rigurosa donde se certifica si la precisión técnica alcanzada por los algoritmos se traduce de forma fiable en valor práctico y operativo para los tomadores de decisiones[cite: 133, 142, 143].
+                Rigorous analytical phase certifying whether the technical precision achieved by the algorithms reliably translates into practical and operational value for decision-makers.
             </p>
             <div class="grid-layout">
                 <div class="card">
-                    <h3>Métricas de Regresión</h3>
-                    <p>Evaluación de la capacidad de predicción del nivel de decibelios ($dB$)[cite: 134, 135].</p>
+                    <h3>Regression Metrics</h3>
+                    <p>Evaluation of the prediction capacity of the decibel level ($dB$).</p>
                     <div class="metric-value">R²: 0.885</div>
-                    <p>Error Absoluto Medio (MAE): $\pm 1.8 \text{ dB}$. El modelo cumple holgadamente la tolerancia para instrumentación de tipo 2.</p>
+                    <p>Mean Absolute Error (MAE): $\pm 1.8 \text{ dB}$. The model comfortably meets the tolerance for Type 2 instrumentation.</p>
                 </div>
                 <div class="card">
-                    <h3>Métricas de Clustering</h3>
-                    <p>Evaluación de la cohesión y separación física de las zonas críticas de ruido identificadas[cite: 134, 135].</p>
-                    <div class="metric-value">Silueta: 0.62</div>
-                    <p>La validación cruzada con subconjuntos aislados confirma agrupamientos estables, bien estructurados y espacialmente coherentes[cite: 136, 137].</p>
+                    <h3>Clustering Metrics</h3>
+                    <p>Evaluation of cohesion and physical separation of the identified critical noise zones.</p>
+                    <div class="metric-value">Silhouette: 0.62</div>
+                    <p>Cross-validation with isolated subsets confirms stable, well-structured, and spatially coherent clusters.</p>
                 </div>
                 <div class="card">
-                    <h3>Análisis de Riesgos (Mantenibilidad)</h3>
-                    <p>Detección de puntos potenciales de vulnerabilidad del sistema ante variaciones estructurales externas[cite: 138, 139].</p>
+                    <h3>Risk Analysis (Maintainability)</h3>
+                    <p>Detection of potential system vulnerability points in the face of external structural variations.</p>
                     <ul class="card-list">
-                        <li><strong>Riesgo Controlado:</strong> Sobreajuste (Overfitting) mitigado mediante penalizaciones $L_2$.</li>
-                        <li><strong>Riesgo Alerta:</strong> Data Drift causado por la modificación drástica de flujos viales durante días festivos o cierres de infraestructura masiva.</li>
+                        <li><strong>Controlled Risk:</strong> Overfitting mitigated through $L_2$ penalties.</li>
+                        <li><strong>Alert Risk:</strong> Data Drift caused by drastic changes in road flows during holidays or major infrastructure closures.</li>
                     </ul>
                 </div>
             </div>
@@ -594,55 +594,55 @@
 
         <section id="fase5" class="section-container">
             <div class="section-header">
-                <h2><span>05 /</span> Despliegue de la Solución</h2>
-                <span class="badge-status">En Progreso</span>
+                <h2><span>05 /</span> Solution Deployment</h2>
+                <span class="badge-status">In Progress</span>
             </div>
             <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem; line-height: 1.6;">
-                Integración sistemática del modelo predictivo validado dentro del ecosistema tecnológico productivo de la solución [cite: 144, 145, 150], garantizando el consumo eficiente de recursos y alta disponibilidad[cite: 147].
+                Systematic integration of the validated predictive model into the production tech ecosystem, ensuring efficient resource consumption and high availability.
             </p>
             <div class="grid-layout">
                 <div class="card">
-                    <h3>Arquitectura en Producción</h3>
-                    <p>Montaje del pipeline y los pesos del modelo final en una interfaz backend de servicios desacoplados (API REST estructurada). Diseñado para recibir JSONs con métricas viales en tiempo real y retornar predicciones analíticas instantáneas en formatos altamente optimizados[cite: 146, 147].</p>
+                    <h3>Production Architecture</h3>
+                    <p>Mounting the pipeline and final model weights on a decoupled backend services interface (structured REST API). Designed to receive JSON payloads with real-time road metrics and return instant analytical predictions in highly optimized formats.</p>
                 </div>
                 <div class="card">
-                    <h3>Manuales de Operación</h3>
-                    <p>Generación de documentación técnica exhaustiva que cubre desde las configuraciones del entorno de dependencias lógicas hasta las guías detalladas para desarrolladores frontend encargados de mapear las alertas acústicas[cite: 148].</p>
+                    <h3>Operation Manuals</h3>
+                    <p>Generation of comprehensive technical documentation covering everything from logical dependency environment configurations to detailed guides for frontend developers responsible for mapping acoustic alerts.</p>
                 </div>
                 <div class="card">
-                    <h3>Protocolos de Integración</h3>
-                    <p>Definición estricta de colas de mensajería asíncrona destinadas a almacenar logs operativos e incidencias de transmisión de sensores viales, aislando fallas del núcleo analítico[cite: 149, 151].</p>
+                    <h3>Integration Protocols</h3>
+                    <p>Strict definition of asynchronous message queues designed to store operational logs and road sensor transmission incidents, isolating failures from the analytical core.</p>
                 </div>
             </div>
         </section>
 
         <section id="fase6" class="section-container">
             <div class="section-header">
-                <h2><span>06 /</span> Monitoreo y Mantenimiento Continuo</h2>
-                <span class="badge-status">Planificado</span>
+                <h2><span>06 /</span> Continuous Monitoring & Maintenance</h2>
+                <span class="badge-status">Planned</span>
             </div>
             <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem; line-height: 1.6;">
-                Estrategias operativas a largo plazo destinadas a la supervisión activa de la degradación del rendimiento del sistema [cite: 153, 158, 162], asegurando su resiliencia técnica ante la evolución del entorno urbano real[cite: 163].
+                Long-term operational strategies aimed at active supervision of system performance degradation, ensuring its technical resilience against the evolution of the real urban environment.
             </p>
             <div class="grid-layout">
                 <div class="card">
-                    <h3>Supervisión Continua</h3>
-                    <p>Implementación de agentes automatizados encargados de verificar la distribución estadística diaria de las variables de entrada frente al histórico de entrenamiento, disparando alertas de sistema si el MAE excede los $2.5 \text{ dB}$ operativos[cite: 154, 155].</p>
+                    <h3>Continuous Supervision</h3>
+                    <p>Implementation of automated agents responsible for verifying the daily statistical distribution of input variables against the training history, triggering system alerts if the MAE exceeds the operational $2.5 \text{ dB}$.</p>
                 </div>
                 <div class="card">
-                    <h3>Planes de Reentrenamiento</h3>
-                    <p>Estrategia cíclica programada para ejecutarse anualmente de forma automatizada tras la publicación oficial y consolidación de los nuevos inventarios históricos de datos abiertos gubernamentales en Colombia, asegurando la captura de nuevas dinámicas de crecimiento urbano[cite: 156, 157].</p>
+                    <h3>Retraining Plans</h3>
+                    <p>Cyclic strategy scheduled to run automatically on an annual basis following the official release and consolidation of new government open data inventories, ensuring the capture of new urban growth dynamics.</p>
                 </div>
                 <div class="card">
-                    <h3>Gestión de Degradación (Drift)</h3>
-                    <p>Políticas de contingencia técnica que conmutan de forma segura el motor analítico principal hacia un modelo de regresión basal heurístico y simplificado si se detecta un desvío severo en los flujos vehiculares (Concept Drift), evitando la emisión de reportes errados[cite: 158, 159, 161].</p>
+                    <h3>Drift Management</h3>
+                    <p>Technical contingency policies that safely switch the main analytical engine to a heuristic, simplified baseline regression model if a severe drift in vehicle flows (Concept Drift) is detected, avoiding erroneous reports.</p>
                 </div>
             </div>
         </section>
     </main>
 
     <script>
-        // Monitoreo de scroll para destacar de forma visual el estado activo en el menú lateral
+        // Scroll monitoring to visually highlight the active state in the sidebar menu
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.section-container');
             const navLinks = document.querySelectorAll('.sidebar-menu a');

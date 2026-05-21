@@ -14,3 +14,5 @@ seaborn==0.13.2
 
 # Utilidades
 python-dotenv==1.0.1
+
+gunicorn

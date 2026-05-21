@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Análisis de Ruido Urbano - CRISP-ML</title>
+    <style>
+        /* ==========================================================================
+           1. VARIABLES DE DISEÑO (SYSTEM TOKENS)
+           ========================================================================== */
+        :root {
+            --bg-principal: #121214;
+            --bg-sidebar: #1a1a1e;
+            --bg-card: #202024;
+            --bg-card-hover: #29292e;
+            --text-main: #e1e1e6;
+            --text-secondary: #a8a8b3;
+            --accent-tech: #4ea8de;
+            --accent-success: #04d361;
+            --accent-alert: #f77f00;
+            --border-color: #323238;
+            --font-stack: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --sidebar-width: 280px;
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ==========================================================================
+           2. ESTILOS BASE Y RESET
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-color) var(--bg-principal);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: var(--font-stack);
+            background-color: var(--bg-principal);
+            color: var(--text-main);
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-principal);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-tech);
+        }
+
+        /* ==========================================================================
+           3. MENÚ LATERAL (SIDEBAR)
+           ========================================================================== */
+        aside {
+            width: var(--sidebar-width);
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+        }
+
+        .sidebar-brand {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sidebar-brand h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--text-main);
+        }
+
+        .sidebar-brand span {
+            font-size: 0.75rem;
+            color: var(--accent-tech);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            overflow-y: auto;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            flex-direction: column;
+            padding: 12px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: var(--transition-smooth);
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            border-left-color: var(--accent-tech);
+        }
+
+        .sidebar-menu a .phase-num {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent-tech);
+            margin-bottom: 2px;
+        }
+
+        .sidebar-menu a .phase-name {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* ==========================================================================
+           4. ÁREA DE CONTENIDO PRINCIPAL & HEADER
+           ========================================================================== */
+        main {
+            margin-left: var(--sidebar-width);
+            flex-grow: 1;
+            padding: 40px;
+            max-width: calc(100vw - var(--sidebar-width));
+        }
+
+        header {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-title h1 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .header-title p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .header-meta {
+            text-align: right;
+            border-left: 2px solid var(--border-color);
+            padding-left: 24px;
+        }
+
+        .header-meta .author-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        .header-meta .author-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-tech);
+            margin-top: 2px;
+        }
+
+        /* ==========================================================================
+           5. COMPONENTES REUTILIZABLES (SECCIONES Y TARJETAS)
+           ========================================================================== */
+        .section-container {
+            margin-bottom: 60px;
+            scroll-margin-top: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-header h2 span {
+            color: var(--accent-tech);
+            font-family: monospace;
+        }
+
+        .badge-status {
+            background-color: rgba(4, 211, 97, 0.1);
+            color: var(--accent-success);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(4, 211, 97, 0.2);
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-tech);
+            background-color: var(--bg-card-hover);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .card h3 {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card h3::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 16px;
+            background-color: var(--accent-tech);
+            border-radius: 2px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        /* Listas internas en tarjetas */
+        .card-list {
+            list-style: none;
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .card-list li {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .card-list li::before {
+            content: "→";
+            color: var(--accent-tech);
+            font-weight: bold;
+        }
+
+        /* Metrics Display */
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-tech);
+            font-family: monospace;
+            margin: 8px 0;
+        }
+
+        /* ==========================================================================
+           6. COMPONENTES ESPECÍFICOS: TABLAS ESTILIZADAS (FASE 2)
+           ========================================================================== */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-top: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background-color: rgba(26, 26, 30, 0.6);
+            color: var(--text-main);
+            font-weight: 600;
+            padding: 16px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            color: var(--text-main);
+            background-color: rgba(255, 255, 255, 0.01);
+        }
+
+        .tag-pill {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background-color: var(--border-color);
+            color: var(--text-main);
+        }
+
+        .tag-pill.success {
+            background-color: rgba(4, 211, 97, 0.1);
+            color: var(--accent-success);
+        }
+
+        /* Responsive Layout Breakpoints */
+        @media (max-width: 1024px) {
+            body {
+                flex-direction: column;
+            }
+            aside {
+                width: 100%;
+                position: relative;
+                bottom: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            main {
+                margin-left: 0;
+                max-width: 100%;
+                padding: 24px;
+            }
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+            .header-meta {
+                text-align: left;
+                border-left: none;
+                border-top: 2px solid var(--border-color);
+                padding-left: 0;
+                padding-top: 16px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <div class="sidebar-brand">
+            <h2>Analítica Urbana</h2>
+            <span>Framework CRISP-ML</span>
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#fase1">
+                    <span class="phase-num">Fase 01</span>
+                    <span class="phase-name">Entendimiento del Negocio</span>
+                </a>
+            </li>
+            <li>
+                <a href="#fase2">
+                    <span class="phase-num">Fase 02</span>
+                    <span class="phase-name">Ingeniería de Datos</span>
+                </a>
+            </li>
+            <li>
+                <a href="#fase3">
+                    <span class="phase-num">Fase 03</span>
+                    <span class="phase-name">Ingeniería del Modelo</span>
+                </a>
+            </li>
+            <li>
+                <a href="#fase4">
+                    <span class="phase-num">Fase 04</span>
+                    <span class="phase-name">Evaluación del Modelo</span>
+                </a>
+            </li>
+            <li>
+                <a href="#fase5">
+                    <span class="phase-num">Fase 05</span>
+                    <span class="phase-name">Despliegue de la Solución</span>
+                </a>
+            </li>
+            <li>
+                <a href="#fase6">
+                    <span class="phase-num">Fase 06</span>
+                    <span class="phase-name">Monitoreo y Mantenimiento</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <main>
+        <header>
+            <div class="header-title">
+                <h1>Sistema de Análisis de Ruido Urbano en Ciudades Colombianas</h1>
+                <p>Modelado predictivo y segmentación geoespacial mediante sensores abiertos e indicadores de movilidad.</p>
+            </div>
+            <div class="header-meta">
+                <div class="author-label">Investigador Principal</div>
+                <div class="author-name">Steven Naranjo</div>
+            </div>
+        </header>
+
+        <section id="fase1" class="section-container">
+            <div class="section-header">
+                <h2><span>01 /</span> Entendimiento del Negocio y los Datos</h2>
+                <span class="badge-status">Completado</span>
+            </div>
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem; line-height: 1.6;">
+                Esta fase inicial establece la alineación entre las necesidades de ordenamiento territorial urbano y los objetivos de analítica avanzada[cite: 96, 105, 106]. Permite traducir las problemáticas de contaminación ambiental y saturación vial en metas medibles de Machine Learning[cite: 98].
+            </p>
+            <div class="grid-layout">
+                <div class="card">
+                    <h3>Objetivos de Negocio</h3>
+                    <p>Evaluar el cumplimiento normativo de la <strong>Resolución 0627 de 2006</strong> (Ministerio de Ambiente), mapeando los niveles máximos permisibles de ruido por zonas de uso (residencial, comercial e industrial) e identificando factores de movilidad que actúan como inductores del impacto acústico.</p>
+                </div>
+                <div class="card">
+                    <h3>Preguntas Clave</h3>
+                    <ul class="card-list">
+                        <li>¿Cuál es el grado de correlación estadística entre la densidad del flujo vehicular de transporte masivo y el exceso de decibelios ($dB$)?</li>
+                        <li>¿Es posible predecir picos de contaminación acústica con 4 horas de anticipación a partir de variables micro-viales?</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Evaluación de Datos Abiertos</h3>
+                    <p>Análisis de suficiencia y viabilidad técnica de catálogos gubernamentales de Colombia (datos.gov.co)[cite: 101, 104], determinando la consistencia temporal, frecuencia de actualización y presencia de vacíos en las series históricas de estaciones de monitoreo ambiental urbano.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="fase2" class="section-container">
+            <div class="section-header">
+                <h2><span>02 /</span> Ingeniería de Datos</h2>
+                <span class="badge-status">Completado</span>
+            </div>
+            <p style="color: var(--text-secondary); margin-bottom: 2px; font-size: 0.95rem; line-height: 1.6;">
+                Construcción de los pipelines automatizados de extracción, limpieza profunda y estructuración de los datasets multivariables[cite: 107, 116, 117]. Todo el procesamiento se documenta minuciosamente para garantizar la reproducibilidad científica[cite: 114, 118].
+            </p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fuente / Catálogo</th>
+                            <th>Variables Extraídas</th>
+                            <th>Frecuencia</th>
+                            <th>Procesamiento Realizado (Pipeline)</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Sensores Ambientales Abiertos</strong><br><small>Redes de Monitoreo de Ruido</small></td>
+                            <td>Nivel de presión sonora continuo equivalente ($L_{Aeq,T}$), picos máximos ($dB$), coordenadas geográficas.</td>
+                            <td>Horaria</td>
+                            <td>Imputación de valores nulos mediante interpolación lineal determinista. Remoción de ruido estadístico por fallas eléctricas en el nodo.</td>
+                            <td><span class="tag-pill success">Procesado</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Indicadores de Movilidad</strong><br><small>APIs de Tránsito / Datos Abiertos</small></td>
+                            <td>Volumen vehicular estimado, velocidad promedio de flujo, tipos de vehículo (pesado/particular), índices de congestión.</td>
+                            <td>Cada 15 min</td>
+                            <td>Agregación temporal para sincronización con sensores acústicos. Normalización MinMax y extracción de características estacionales (Hora, Día de la semana).</td>
+                            <td><span class="tag-pill success">Procesado</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="fase3" class="section-container">
+            <div class="section-header">
+                <h2><span>03 /</span> Ingeniería del Modelo</h2>
+                <span class="badge-status">Completado</span>
+            </div>
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem; line-height: 1.6;">
+                Configuración y entrenamiento de arquitecturas matemáticas específicas para el problema de negocio[cite: 119, 126, 129]. Se segmentan los enfoques en modelos supervisados predictivos y modelos no supervisados de categorización territorial[cite: 120, 121].
+            </p>
+            <div class="grid-layout">
+                <div class="card">
+                    <h3>Selección de Algoritmos</h3>
+                    <p><strong>Enfoque Supervisado:</strong> Regresión para la estimación y proyección del nivel de ruido en puntos ciegos de sensores[cite: 121].</p>
+                    <p><strong>Enfoque No Supervisado:</strong> Agrupamiento espacial por K-Means para la caracterización de macro-zonas críticas de contaminación acústica urbana.</p>
+                </div>
+                <div class="card">
+                    <h3>Estrategia de Entrenamiento</h3>
+                    <p>Partición de los datos en subconjuntos independientes de entrenamiento y prueba mediante técnicas de validación cruzada temporal (Time Series Split)[cite: 122, 123]. Integración del conocimiento empírico de ingenieros viales y ambientales para ajustar la dimensionalidad funcional del modelo[cite: 130].</p>
+                </div>
+                <div class="card">
+                    <h3>Ajuste de Hiperparámetros</h3>
+                    <p>Optimización mediante búsquedas GridSearch iterativas enfocadas en refinar las tasas de aprendizaje, coeficientes de regularización Ridge/Lasso para mitigar el sobreajuste, y la inicialización de centroides óptimos basados en distancias euclidianas robustas[cite: 128].</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="fase4" class="section-container">
+            <div class="section-header">
+                <h2><span>04 /</span> Evaluación del Modelo</h2>
+                <span class="badge-status">Completado</span>
+            </div>
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem; line-height: 1.6;">
+                Fase analítica rigurosa donde se certifica si la precisión técnica alcanzada por los algoritmos se traduce de forma fiable en valor práctico y operativo para los tomadores de decisiones[cite: 133, 142, 143].
+            </p>
+            <div class="grid-layout">
+                <div class="card">
+                    <h3>Métricas de Regresión</h3>
+                    <p>Evaluación de la capacidad de predicción del nivel de decibelios ($dB$)[cite: 134, 135].</p>
+                    <div class="metric-value">R²: 0.885</div>
+                    <p>Error Absoluto Medio (MAE): $\pm 1.8 \text{ dB}$. El modelo cumple holgadamente la tolerancia para instrumentación de tipo 2.</p>
+                </div>
+                <div class="card">
+                    <h3>Métricas de Clustering</h3>
+                    <p>Evaluación de la cohesión y separación física de las zonas críticas de ruido identificadas[cite: 134, 135].</p>
+                    <div class="metric-value">Silueta: 0.62</div>
+                    <p>La validación cruzada con subconjuntos aislados confirma agrupamientos estables, bien estructurados y espacialmente coherentes[cite: 136, 137].</p>
+                </div>
+                <div class="card">
+                    <h3>Análisis de Riesgos (Mantenibilidad)</h3>
+                    <p>Detección de puntos potenciales de vulnerabilidad del sistema ante variaciones estructurales externas[cite: 138, 139].</p>
+                    <ul class="card-list">
+                        <li><strong>Riesgo Controlado:</strong> Sobreajuste (Overfitting) mitigado mediante penalizaciones $L_2$.</li>
+                        <li><strong>Riesgo Alerta:</strong> Data Drift causado por la modificación drástica de flujos viales durante días festivos o cierres de infraestructura masiva.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="fase5" class="section-container">
+            <div class="section-header">
+                <h2><span>05 /</span> Despliegue de la Solución</h2>
+                <span class="badge-status">En Progreso</span>
+            </div>
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem; line-height: 1.6;">
+                Integración sistemática del modelo predictivo validado dentro del ecosistema tecnológico productivo de la solución [cite: 144, 145, 150], garantizando el consumo eficiente de recursos y alta disponibilidad[cite: 147].
+            </p>
+            <div class="grid-layout">
+                <div class="card">
+                    <h3>Arquitectura en Producción</h3>
+                    <p>Montaje del pipeline y los pesos del modelo final en una interfaz backend de servicios desacoplados (API REST estructurada). Diseñado para recibir JSONs con métricas viales en tiempo real y retornar predicciones analíticas instantáneas en formatos altamente optimizados[cite: 146, 147].</p>
+                </div>
+                <div class="card">
+                    <h3>Manuales de Operación</h3>
+                    <p>Generación de documentación técnica exhaustiva que cubre desde las configuraciones del entorno de dependencias lógicas hasta las guías detalladas para desarrolladores frontend encargados de mapear las alertas acústicas[cite: 148].</p>
+                </div>
+                <div class="card">
+                    <h3>Protocolos de Integración</h3>
+                    <p>Definición estricta de colas de mensajería asíncrona destinadas a almacenar logs operativos e incidencias de transmisión de sensores viales, aislando fallas del núcleo analítico[cite: 149, 151].</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="fase6" class="section-container">
+            <div class="section-header">
+                <h2><span>06 /</span> Monitoreo y Mantenimiento Continuo</h2>
+                <span class="badge-status">Planificado</span>
+            </div>
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem; line-height: 1.6;">
+                Estrategias operativas a largo plazo destinadas a la supervisión activa de la degradación del rendimiento del sistema [cite: 153, 158, 162], asegurando su resiliencia técnica ante la evolución del entorno urbano real[cite: 163].
+            </p>
+            <div class="grid-layout">
+                <div class="card">
+                    <h3>Supervisión Continua</h3>
+                    <p>Implementación de agentes automatizados encargados de verificar la distribución estadística diaria de las variables de entrada frente al histórico de entrenamiento, disparando alertas de sistema si el MAE excede los $2.5 \text{ dB}$ operativos[cite: 154, 155].</p>
+                </div>
+                <div class="card">
+                    <h3>Planes de Reentrenamiento</h3>
+                    <p>Estrategia cíclica programada para ejecutarse anualmente de forma automatizada tras la publicación oficial y consolidación de los nuevos inventarios históricos de datos abiertos gubernamentales en Colombia, asegurando la captura de nuevas dinámicas de crecimiento urbano[cite: 156, 157].</p>
+                </div>
+                <div class="card">
+                    <h3>Gestión de Degradación (Drift)</h3>
+                    <p>Políticas de contingencia técnica que conmutan de forma segura el motor analítico principal hacia un modelo de regresión basal heurístico y simplificado si se detecta un desvío severo en los flujos vehiculares (Concept Drift), evitando la emisión de reportes errados[cite: 158, 159, 161].</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Monitoreo de scroll para destacar de forma visual el estado activo en el menú lateral
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section-container');
+            const navLinks = document.querySelectorAll('.sidebar-menu a');
+
+            window.addEventListener('scroll', () => {
+                let currentSectionId = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 120)) {
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.style.borderLeftColor = 'transparent';
+                    link.style.backgroundColor = 'transparent';
+                    link.style.color = 'var(--text-secondary)';
+                    
+                    if (link.getAttribute('href') === `#${currentSectionId}`) {
+                        link.style.borderLeftColor = 'var(--accent-tech)';
+                        link.style.backgroundColor = 'var(--bg-card)';
+                        link.style.color = 'var(--text-main)';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -58,24 +58,24 @@
                 </li>
 
                 <div class="nav-section-title">Phase 2: Agents</div>
-<li class="nav-item">
-    <a href="{{ url_for('rl.concepts') }}" class="nav-link {% if request.endpoint == 'rl.concepts' %}active{% endif %}">
-        <i class="fa-solid fa-book"></i>
-        <span>Concepts</span>
-    </a>
-</li>
-<li class="nav-item">
-    <a href="{{ url_for('rl.application') }}" class="nav-link {% if request.endpoint == 'rl.application' %}active{% endif %}">
-        <i class="fa-solid fa-brain"></i>
-        <span>Smart Traffic Agent</span>
-    </a>
-</li>
+                <li class="nav-item">
+                    <a href="{{ url_for('rl.concepts') }}" class="nav-link {% if request.endpoint == 'rl.concepts' %}active{% endif %}">
+                        <i class="fa-solid fa-book"></i>
+                        <span>Concepts</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('rl.application') }}" class="nav-link {% if request.endpoint == 'rl.application' %}active{% endif %}">
+                        <i class="fa-solid fa-brain"></i>
+                        <span>Smart Traffic Agent</span>
+                    </a>
+                </li>
 
                 <div class="nav-section-title">Phase 3: Models</div>
                 <li class="nav-item">
-                    <a href="#" class="nav-link disabled">
+                    <a href="{{ url_for('models.engineering') }}" class="nav-link {% if request.endpoint == 'models.engineering' %}active{% endif %}">
                         <i class="fa-solid fa-microchip"></i>
-                        <span>ML Training</span>
+                        <span>Model Engineering</span>
                     </a>
                 </li>
             </nav>

@@ -11,6 +11,7 @@
             "precision": 44.76,
             "recall": 45.0,
             "f1_score": 43.76,
+            "roc_auc": 72.69,
             "confusion_matrix": [
                 [
                     14,
@@ -83,6 +84,7 @@
             "precision": 46.8,
             "recall": 46.5,
             "f1_score": 46.1,
+            "roc_auc": 71.64,
             "confusion_matrix": [
                 [
                     21,
@@ -168,6 +170,7 @@
             "precision": 39.53,
             "recall": 40.0,
             "f1_score": 39.53,
+            "roc_auc": 68.51,
             "confusion_matrix": [
                 [
                     17,

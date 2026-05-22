@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="fade-in-up">
+    <h1 class="page-title">Model <span class="text-gradient">Evaluation</span></h1>
+    <p class="page-subtitle">Comparative performance analysis, Confusion Matrices, and final model selection.</p>
+</header>
+
+{% if not metrics %}
+<div class="glass-card text-center fade-in-up">
+    <h3 style="color: #ef4444;"><i class="fa-solid fa-triangle-exclamation"></i> Metrics Not Found</h3>
+    <p>Please run the training pipeline first.</p>
+</div>
+{% else %}
+
+<section class="glass-card fade-in-up delay-1" style="margin-bottom: 2rem; border-color: rgba(16, 185, 129, 0.4);">
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 1rem;">
+        <div class="card-icon" style="color: #10b981; border-color: rgba(16, 185, 129, 0.4); margin: 0;"><i class="fa-solid fa-check-double"></i></div>
+        <h3 style="margin: 0; color: #10b981;">Final Selection: {{ metrics.best_model }}</h3>
+    </div>
+    <p style="color: var(--text-muted); font-size: 0.95rem; text-align: justify;">
+        <strong>Justification:</strong> The {{ metrics.best_model }} algorithm was selected as the optimal model for deployment. While Accuracy gives a general overview, dealing with Urban Noise classifications requires a strong balance between False Positives and False Negatives. This model achieved the highest <strong>F1-Score ({{ metrics.models[metrics.best_model].f1_score }}%)</strong> and an exceptional <strong>ROC AUC ({{ metrics.models[metrics.best_model].roc_auc }}%)</strong>, proving its robustness in distinguishing between different acoustic saturation levels across varying environmental states.
+    </p>
+</section>
+
+<section class="grid-2 fade-in-up delay-2" style="margin-bottom: 2rem;">
+    <div class="glass-card" style="padding: 1rem;">
+        <div id="comparison-chart" style="width: 100%; height: 350px;"></div>
+    </div>
+    
+    <div class="glass-card">
+        <h4 style="margin-bottom: 1.5rem;"><i class="fa-solid fa-table text-gradient" style="margin-right: 10px;"></i> Evaluation Metrics Table</h4>
+        <div style="overflow-x: auto;">
+            <table class="table table-dark table-hover" style="background: transparent; font-size: 0.85rem; width: 100%; text-align: left;">
+                <thead>
+                    <tr style="border-bottom: 2px solid var(--accent-secondary);">
+                        <th style="padding-bottom: 10px; color: var(--text-secondary);">Model</th>
+                        <th style="padding-bottom: 10px; color: var(--text-secondary);">Accuracy</th>
+                        <th style="padding-bottom: 10px; color: var(--text-secondary);">Precision</th>
+                        <th style="padding-bottom: 10px; color: var(--text-secondary);">Recall</th>
+                        <th style="padding-bottom: 10px; color: var(--text-secondary);">F1-Score</th>
+                        <th style="padding-bottom: 10px; color: var(--text-secondary);">ROC AUC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for model_name, model_data in metrics.models.items() %}
+                    <tr style="border-bottom: 1px solid var(--border-light);">
+                        <td style="padding: 10px 0; color: {% if model_name == metrics.best_model %}#10b981{% else %}var(--text-primary){% endif %};">
+                            <strong>{{ model_name }}</strong>
+                        </td>
+                        <td style="color: var(--text-muted);">{{ model_data.accuracy }}%</td>
+                        <td style="color: var(--text-muted);">{{ model_data.precision }}%</td>
+                        <td style="color: var(--text-muted);">{{ model_data.recall }}%</td>
+                        <td style="color: var(--text-muted);"><strong>{{ model_data.f1_score }}%</strong></td>
+                        <td style="color: var(--accent-primary);">{{ model_data.roc_auc }}%</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<h3 class="fade-in-up delay-3" style="margin-bottom: 1.5rem;"><i class="fa-solid fa-border-all text-gradient"></i> Confusion Matrices Analysis</h3>
+<section class="grid-3 fade-in-up delay-3" style="margin-bottom: 2rem;">
+    {% for model_name, chart_json in cm_charts.items() %}
+    <div class="glass-card" style="padding: 1rem;">
+        <div id="cm-{{ loop.index }}" style="width: 100%; height: 300px;"></div>
+    </div>
+    {% endfor %}
+</section>
+
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{% if metrics %}
+<script>
+    // Inyectar gráfica comparativa general
+    const compChartData = JSON.parse('{{ comparison_chart | safe }}');
+    Plotly.newPlot('comparison-chart', compChartData.data, compChartData.layout, {responsive: true, displayModeBar: false});
+
+    // Inyectar gráficas de Matrices de Confusión iterando el diccionario enviado por Flask
+    const cmData = {{ cm_charts | tojson | safe }};
+    let i = 1;
+    for (const [modelName, chartJsonStr] of Object.entries(cmData)) {
+        const chartJson = JSON.parse(chartJsonStr);
+        Plotly.newPlot(`cm-${i}`, chartJson.data, chartJson.layout, {responsive: true, displayModeBar: false});
+        i++;
+    }
+</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="fade-in-up">
+    <h1 class="page-title">CRISP-ML <span class="text-gradient">Methodology</span></h1>
+    <p class="page-subtitle">Cross-Industry Standard Process for Machine Learning with Quality Assurance</p>
+</header>
+
+<section class="fade-in-up delay-1" style="margin-bottom: 2rem;">
+    <div class="glass-card">
+        <div class="card-icon">
+            <i class="fa-solid fa-sitemap"></i>
+        </div>
+        <h3>Methodological Framework</h3>
+        <p style="color: var(--text-muted); text-align: justify; line-height: 1.8;">
+            This project strictly adheres to the <strong>CRISP-ML(Q)</strong> methodology, an evolution of the traditional CRISP-DM model, 
+            specifically adapted for modern Machine Learning lifecycles. It provides a systematic, cyclical approach to developing 
+            predictive models, ensuring that business objectives are met while maintaining rigorous data quality and seamless deployment strategies.
+        </p>
+    </div>
+</section>
+
+<section class="grid-3 fade-in-up delay-2">
+    <div class="glass-card">
+        <h4 style="color: var(--accent-primary); margin-bottom: 1rem;"><i class="fa-solid fa-1"></i> Phase 1</h4>
+        <h5 style="margin-bottom: 0.5rem;">Business & Data Understanding</h5>
+        <p style="color: var(--text-muted); font-size: 0.9rem; text-align: justify;">
+            Translating business needs into ML objectives, evaluating data feasibility, and defining the success criteria for the predictive system.
+        </p>
+    </div>
+
+    <div class="glass-card">
+        <h4 style="color: var(--accent-primary); margin-bottom: 1rem;"><i class="fa-solid fa-2"></i> Phase 2</h4>
+        <h5 style="margin-bottom: 0.5rem;">Data Engineering</h5>
+        <p style="color: var(--text-muted); font-size: 0.9rem; text-align: justify;">
+            Data cleaning, handling null values, feature engineering (like creating the Congestion Index), and scaling data for modeling.
+        </p>
+    </div>
+
+    <div class="glass-card">
+        <h4 style="color: var(--accent-primary); margin-bottom: 1rem;"><i class="fa-solid fa-3"></i> Phase 3</h4>
+        <h5 style="margin-bottom: 0.5rem;">Model Engineering</h5>
+        <p style="color: var(--text-muted); font-size: 0.9rem; text-align: justify;">
+            Algorithm selection, dataset splitting, hyperparameter tuning, and training multiple models (e.g., Random Forest, XGBoost).
+        </p>
+    </div>
+
+    <div class="glass-card">
+        <h4 style="color: var(--accent-primary); margin-bottom: 1rem;"><i class="fa-solid fa-4"></i> Phase 4</h4>
+        <h5 style="margin-bottom: 0.5rem;">Model Evaluation</h5>
+        <p style="color: var(--text-muted); font-size: 0.9rem; text-align: justify;">
+            Assessing model performance against initial business objectives using rigorous metrics (Accuracy, F1-Score, RMSE).
+        </p>
+    </div>
+
+    <div class="glass-card">
+        <h4 style="color: var(--accent-primary); margin-bottom: 1rem;"><i class="fa-solid fa-5"></i> Phase 5</h4>
+        <h5 style="margin-bottom: 0.5rem;">Deployment</h5>
+        <p style="color: var(--text-muted); font-size: 0.9rem; text-align: justify;">
+            Integrating the selected model into a production environment via Flask, allowing end-users to interact with the system globally.
+        </p>
+    </div>
+
+    <div class="glass-card" style="border-color: rgba(79, 70, 229, 0.4);">
+        <h4 style="color: var(--accent-secondary); margin-bottom: 1rem;"><i class="fa-solid fa-6"></i> Phase 6</h4>
+        <h5 style="margin-bottom: 0.5rem;">Monitoring & Maintenance</h5>
+        <p style="color: var(--text-muted); font-size: 0.9rem; text-align: justify;">
+            Tracking model drift and ensuring continuous quality assurance once the tool is live on Render.com.
+        </p>
+    </div>
+</section>
+{% endblock %}

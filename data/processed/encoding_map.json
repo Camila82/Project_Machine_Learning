@@ -5,11 +5,17 @@
     "Alto": 2,
     "Crítico": 3
   },
-  "target_order": [
+  "target_order_es": [
     "Bajo",
     "Moderado",
     "Alto",
     "Crítico"
+  ],
+  "target_order_en": [
+    "Low",
+    "Moderate",
+    "High",
+    "Critical"
   ],
   "categorical_encodings": {
     "Ciudad": {
@@ -50,11 +56,11 @@
       "Nublado": 2,
       "Ventoso": 3
     },
-    "Franja_Horaria": {
-      "Madrugada": 0,
-      "Mañana": 1,
-      "Noche": 2,
-      "Tarde": 3
+    "Time_Band": {
+      "Afternoon": 0,
+      "Early Morning": 1,
+      "Morning": 2,
+      "Night": 3
     }
   },
   "numeric_features_scaled": [
@@ -64,8 +70,8 @@
     "Velocidad_Promedio_kmh",
     "Saturacion_Transporte",
     "Calidad_Señal_Sensor",
-    "Indice_Congestion",
-    "Ratio_Ruido_Velocidad"
+    "Congestion_Index",
+    "Noise_Speed_Ratio"
   ],
   "scaler_min": [
     30.0,

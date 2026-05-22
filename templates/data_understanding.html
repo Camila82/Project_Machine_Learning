@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="fade-in-up">
+    <h1 class="page-title">Data <span class="text-gradient">Understanding</span></h1>
+    <p class="page-subtitle">Exploratory Data Analysis and Feature Evaluation of the Urban Noise Dataset.</p>
+</header>
+
+<section class="grid-4 mb-4 fade-in-up delay-1" style="margin-bottom: 2rem;">
+    <div class="glass-card text-center" style="padding: 1.5rem;">
+        <div class="stat-number">{{ general.total_records }}</div>
+        <div class="stat-label">Total Records</div>
+    </div>
+    <div class="glass-card text-center" style="padding: 1.5rem;">
+        <div class="stat-number">{{ eda.total_columns }}</div>
+        <div class="stat-label">Total Features</div>
+    </div>
+    <div class="glass-card text-center" style="padding: 1.5rem;">
+        <div class="stat-number">{{ general.cities_covered }}</div>
+        <div class="stat-label">Cities Covered</div>
+    </div>
+    <div class="glass-card text-center" style="padding: 1.5rem; border-color: rgba(0, 240, 255, 0.4);">
+        <div class="stat-number text-gradient">0</div>
+        <div class="stat-label">Missing Values</div>
+    </div>
+</section>
+
+<section class="grid-2 fade-in-up delay-2" style="margin-bottom: 2rem;">
+    <div class="glass-card" style="padding: 1rem;">
+        <h4 style="margin: 1rem; color: var(--accent-primary);">Target Variable Distribution</h4>
+        <div id="dist-chart" style="width: 100%; height: 350px;"></div>
+    </div>
+    <div class="glass-card" style="padding: 1rem;">
+        <h4 style="margin: 1rem; color: var(--accent-secondary);">Numeric Correlation Matrix</h4>
+        <div style="overflow-x: auto; padding-bottom: 10px;" class="custom-scrollbar">
+            <div id="corr-chart" style="min-width: 700px; height: 350px;"></div>
+        </div>
+    </div>
+</section>
+
+<section class="fade-in-up delay-3" style="margin-bottom: 2rem;">
+    <div class="glass-card">
+        <h3 style="margin-bottom: 1.5rem;"><i class="fa-solid fa-book-open text-gradient" style="margin-right: 10px;"></i> Data Dictionary & Variable Analysis</h3>
+        <div style="max-height: 400px; overflow-y: auto; padding-right: 10px;" class="custom-scrollbar">
+            {% for var in eda.variables %}
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-light); border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <h5 style="color: var(--text-primary); margin: 0;">{{ var.name }}</h5>
+                    <span style="background: {% if var.type == 'numeric' %}rgba(0, 240, 255, 0.1){% else %}rgba(79, 70, 229, 0.1){% endif %}; color: {% if var.type == 'numeric' %}var(--accent-primary){% else %}var(--accent-secondary){% endif %}; padding: 3px 10px; border-radius: 12px; font-size: 0.8rem; border: 1px solid var(--border-light);">
+                        {{ var.type | upper }}
+                    </span>
+                </div>
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.85rem; color: var(--text-muted);">
+                    <div style="flex: 1; min-width: 120px;"><strong>Unique Values:</strong> {{ var.unique }}</div>
+                    <div style="flex: 1; min-width: 150px;"><strong>Nulls:</strong> {{ var.null_count }} ({{ var.null_pct }}%)</div>
+                    {% if var.type == 'numeric' %}
+                        <div style="flex: 1; min-width: 100px;"><strong>Min:</strong> {{ var.stats.min }}</div>
+                        <div style="flex: 1; min-width: 100px;"><strong>Max:</strong> {{ var.stats.max }}</div>
+                        <div style="flex: 1; min-width: 100px;"><strong>Mean:</strong> {{ var.stats.mean }}</div>
+                    {% endif %}
+                </div>
+
+            </div>
+            {% endfor %} 
+        </div>
+    </div>
+</section>
+
+<section class="fade-in-up delay-3">
+    <div class="glass-card">
+        <h3 style="margin-bottom: 1.5rem;"><i class="fa-solid fa-table text-gradient" style="margin-right: 10px;"></i> Cleaned Dataset Sample (First 50 Rows)</h3>
+        <div style="overflow-x: auto;" class="custom-scrollbar">
+            <table class="table table-dark table-hover" style="background: transparent; font-size: 0.85rem; margin-bottom: 0;">
+                <thead>
+                    <tr style="border-bottom: 2px solid var(--accent-secondary);">
+                        {% for key in sample_data[0].keys() %}
+                        <th style="background: transparent; color: var(--text-secondary); white-space: nowrap;">{{ key }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in sample_data %}
+                    <tr style="border-bottom: 1px solid var(--border-light);">
+                        {% for value in row.values() %}
+                        <td style="background: transparent; color: var(--text-muted); white-space: nowrap;">{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Inyectar y renderizar gráficas Plotly
+    const distChartData = JSON.parse('{{ dist_chart | safe }}');
+    Plotly.newPlot('dist-chart', distChartData.data, distChartData.layout, {responsive: true, displayModeBar: false});
+
+    const corrChartData = JSON.parse('{{ corr_chart | safe }}');
+    Plotly.newPlot('corr-chart', corrChartData.data, corrChartData.layout, {responsive: true, displayModeBar: false});
+</script>
+<style>
+    .custom-scrollbar::-webkit-scrollbar { width: 8px; height: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; margin: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+</style>
+{% endblock %}

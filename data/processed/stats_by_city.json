@@ -1,0 +1,217 @@
+{
+  "Barranquilla": {
+    "total_measurements": 106,
+    "avg_noise_db": 58.0,
+    "max_noise_db": 94.2,
+    "min_noise_db": 32.4,
+    "pct_critical": 21.7,
+    "pct_exceeds_normative": 33.96,
+    "avg_mobility_index": 39.44,
+    "avg_vehicle_flow": 445.0,
+    "classification_dist": {
+      "Moderado": 41,
+      "Bajo": 27,
+      "Crítico": 23,
+      "Alto": 15
+    },
+    "noise_source_dist": {
+      "Tráfico_Vehicular": 37,
+      "Transporte_Público": 21,
+      "Comercio": 20,
+      "Construcción": 9,
+      "Mixta": 7,
+      "Eventos": 6,
+      "Industrial": 6
+    },
+    "lat_center": 10.9657,
+    "lon_center": -74.7933
+  },
+  "Bogotá": {
+    "total_measurements": 295,
+    "avg_noise_db": 60.66,
+    "max_noise_db": 97.5,
+    "min_noise_db": 30.8,
+    "pct_critical": 16.95,
+    "pct_exceeds_normative": 42.03,
+    "avg_mobility_index": 43.14,
+    "avg_vehicle_flow": 492.4,
+    "classification_dist": {
+      "Moderado": 98,
+      "Alto": 84,
+      "Bajo": 63,
+      "Crítico": 50
+    },
+    "noise_source_dist": {
+      "Tráfico_Vehicular": 109,
+      "Transporte_Público": 58,
+      "Comercio": 42,
+      "Construcción": 30,
+      "Eventos": 25,
+      "Industrial": 20,
+      "Mixta": 11
+    },
+    "lat_center": 4.7099,
+    "lon_center": -74.0726
+  },
+  "Bucaramanga": {
+    "total_measurements": 76,
+    "avg_noise_db": 63.87,
+    "max_noise_db": 102.3,
+    "min_noise_db": 30.0,
+    "pct_critical": 30.26,
+    "pct_exceeds_normative": 53.95,
+    "avg_mobility_index": 48.26,
+    "avg_vehicle_flow": 550.4,
+    "classification_dist": {
+      "Crítico": 23,
+      "Moderado": 21,
+      "Alto": 19,
+      "Bajo": 13
+    },
+    "noise_source_dist": {
+      "Tráfico_Vehicular": 27,
+      "Transporte_Público": 18,
+      "Construcción": 12,
+      "Industrial": 8,
+      "Comercio": 8,
+      "Eventos": 3
+    },
+    "lat_center": 7.1132,
+    "lon_center": -73.1241
+  },
+  "Cali": {
+    "total_measurements": 157,
+    "avg_noise_db": 60.45,
+    "max_noise_db": 94.9,
+    "min_noise_db": 30.7,
+    "pct_critical": 19.11,
+    "pct_exceeds_normative": 39.49,
+    "avg_mobility_index": 43.73,
+    "avg_vehicle_flow": 509.9,
+    "classification_dist": {
+      "Moderado": 44,
+      "Alto": 42,
+      "Bajo": 41,
+      "Crítico": 30
+    },
+    "noise_source_dist": {
+      "Tráfico_Vehicular": 53,
+      "Transporte_Público": 31,
+      "Comercio": 26,
+      "Eventos": 14,
+      "Construcción": 13,
+      "Mixta": 12,
+      "Industrial": 8
+    },
+    "lat_center": 3.4499,
+    "lon_center": -76.5311
+  },
+  "Cartagena": {
+    "total_measurements": 73,
+    "avg_noise_db": 64.51,
+    "max_noise_db": 92.8,
+    "min_noise_db": 31.3,
+    "pct_critical": 31.51,
+    "pct_exceeds_normative": 47.95,
+    "avg_mobility_index": 48.77,
+    "avg_vehicle_flow": 560.3,
+    "classification_dist": {
+      "Crítico": 23,
+      "Bajo": 17,
+      "Moderado": 17,
+      "Alto": 16
+    },
+    "noise_source_dist": {
+      "Tráfico_Vehicular": 26,
+      "Transporte_Público": 14,
+      "Comercio": 12,
+      "Construcción": 11,
+      "Industrial": 5,
+      "Eventos": 3,
+      "Mixta": 2
+    },
+    "lat_center": 10.3867,
+    "lon_center": -75.4775
+  },
+  "Manizales": {
+    "total_measurements": 59,
+    "avg_noise_db": 60.86,
+    "max_noise_db": 92.0,
+    "min_noise_db": 37.7,
+    "pct_critical": 15.25,
+    "pct_exceeds_normative": 45.76,
+    "avg_mobility_index": 38.44,
+    "avg_vehicle_flow": 431.6,
+    "classification_dist": {
+      "Moderado": 23,
+      "Bajo": 15,
+      "Alto": 12,
+      "Crítico": 9
+    },
+    "noise_source_dist": {
+      "Tráfico_Vehicular": 21,
+      "Transporte_Público": 13,
+      "Construcción": 8,
+      "Comercio": 7,
+      "Eventos": 7,
+      "Mixta": 2,
+      "Industrial": 1
+    },
+    "lat_center": 5.0719,
+    "lon_center": -75.5185
+  },
+  "Medellín": {
+    "total_measurements": 185,
+    "avg_noise_db": 60.36,
+    "max_noise_db": 101.2,
+    "min_noise_db": 30.0,
+    "pct_critical": 18.38,
+    "pct_exceeds_normative": 40.0,
+    "avg_mobility_index": 38.88,
+    "avg_vehicle_flow": 446.4,
+    "classification_dist": {
+      "Moderado": 53,
+      "Bajo": 52,
+      "Alto": 46,
+      "Crítico": 34
+    },
+    "noise_source_dist": {
+      "Tráfico_Vehicular": 57,
+      "Transporte_Público": 53,
+      "Comercio": 30,
+      "Construcción": 19,
+      "Eventos": 11,
+      "Industrial": 8,
+      "Mixta": 7
+    },
+    "lat_center": 6.241,
+    "lon_center": -75.5746
+  },
+  "Pereira": {
+    "total_measurements": 49,
+    "avg_noise_db": 62.8,
+    "max_noise_db": 94.3,
+    "min_noise_db": 34.6,
+    "pct_critical": 18.37,
+    "pct_exceeds_normative": 44.9,
+    "avg_mobility_index": 44.78,
+    "avg_vehicle_flow": 505.3,
+    "classification_dist": {
+      "Moderado": 19,
+      "Alto": 13,
+      "Crítico": 9,
+      "Bajo": 8
+    },
+    "noise_source_dist": {
+      "Tráfico_Vehicular": 16,
+      "Comercio": 11,
+      "Transporte_Público": 9,
+      "Construcción": 6,
+      "Industrial": 3,
+      "Eventos": 2,
+      "Mixta": 2
+    },
+    "lat_center": 4.812,
+    "lon_center": -75.6961
+  }
+}

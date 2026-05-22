@@ -1,0 +1,372 @@
+{
+  "total_records": 1000,
+  "total_columns": 26,
+  "numeric_cols": 16,
+  "categorical_cols": 10,
+  "total_nulls": 0,
+  "variables": [
+    {
+      "name": "Ciudad",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 8,
+      "type": "categorical",
+      "top_values": {
+        "Bogotá": 295,
+        "Medellín": 185,
+        "Cali": 157,
+        "Barranquilla": 106,
+        "Bucaramanga": 76
+      }
+    },
+    {
+      "name": "Fecha",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 720,
+      "type": "categorical",
+      "top_values": {
+        "2024-11-05 00:00:00": 5,
+        "2025-02-24 00:00:00": 5,
+        "2024-01-12 00:00:00": 4,
+        "2025-06-13 00:00:00": 4,
+        "2025-06-19 00:00:00": 4
+      }
+    },
+    {
+      "name": "Hora",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 24,
+      "type": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 23.0,
+        "mean": 11.973,
+        "std": 6.8744,
+        "q25": 6.0,
+        "q50": 12.0,
+        "q75": 18.0
+      }
+    },
+    {
+      "name": "Latitud",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 911,
+      "type": "numeric",
+      "stats": {
+        "min": 3.4027,
+        "max": 11.0123,
+        "mean": 6.0819,
+        "std": 2.399,
+        "q25": 4.69,
+        "q50": 4.8599,
+        "q75": 7.0786
+      }
+    },
+    {
+      "name": "Longitud",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 908,
+      "type": "numeric",
+      "stats": {
+        "min": -76.5819,
+        "max": -73.0721,
+        "mean": -75.0082,
+        "std": 1.0064,
+        "q25": -75.5974,
+        "q50": -75.4582,
+        "q75": -74.0828
+      }
+    },
+    {
+      "name": "Tipo_Zona",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 6,
+      "type": "categorical",
+      "top_values": {
+        "Residencial": 368,
+        "Comercial": 274,
+        "Mixta": 162,
+        "Industrial": 102,
+        "Hospitalaria": 55
+      }
+    },
+    {
+      "name": "Tipo_Sensor",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 3,
+      "type": "categorical",
+      "top_values": {
+        "Sensor_Fijo": 601,
+        "Sensor_Móvil": 265,
+        "Sensor_Ciudadano": 134
+      }
+    },
+    {
+      "name": "Fuente_Principal_Ruido",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 7,
+      "type": "categorical",
+      "top_values": {
+        "Tráfico_Vehicular": 346,
+        "Transporte_Público": 217,
+        "Comercio": 156,
+        "Construcción": 108,
+        "Eventos": 71
+      }
+    },
+    {
+      "name": "Nivel_Ruido_dB",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 473,
+      "type": "numeric",
+      "stats": {
+        "min": 30.0,
+        "max": 102.3,
+        "mean": 60.9334,
+        "std": 14.3353,
+        "q25": 50.675,
+        "q50": 59.75,
+        "q75": 72.125
+      }
+    },
+    {
+      "name": "Clasificacion_Normativa",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 4,
+      "type": "categorical",
+      "top_values": {
+        "Moderado": 316,
+        "Alto": 247,
+        "Bajo": 236,
+        "Crítico": 201
+      }
+    },
+    {
+      "name": "Indice_Movilidad",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 95,
+      "type": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 95.0,
+        "mean": 42.653,
+        "std": 26.7175,
+        "q25": 23.0,
+        "q50": 40.0,
+        "q75": 62.0
+      }
+    },
+    {
+      "name": "Flujo_Vehicular_veh_h",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 608,
+      "type": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 1416.0,
+        "mean": 488.036,
+        "std": 318.6439,
+        "q25": 254.75,
+        "q50": 471.5,
+        "q75": 726.5
+      }
+    },
+    {
+      "name": "Velocidad_Promedio_kmh",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 398,
+      "type": "numeric",
+      "stats": {
+        "min": 11.3,
+        "max": 75.1,
+        "mean": 43.3094,
+        "std": 11.5741,
+        "q25": 34.975,
+        "q50": 42.85,
+        "q75": 52.0
+      }
+    },
+    {
+      "name": "Saturacion_Transporte",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 101,
+      "type": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.5458,
+        "std": 0.3141,
+        "q25": 0.3,
+        "q50": 0.55,
+        "q75": 0.81
+      }
+    },
+    {
+      "name": "Condicion_Climatica",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 4,
+      "type": "categorical",
+      "top_values": {
+        "Despejado": 453,
+        "Nublado": 298,
+        "Lluvioso": 201,
+        "Ventoso": 48
+      }
+    },
+    {
+      "name": "Calidad_Señal_Sensor",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 31,
+      "type": "numeric",
+      "stats": {
+        "min": 0.7,
+        "max": 1.0,
+        "mean": 0.8499,
+        "std": 0.0882,
+        "q25": 0.77,
+        "q50": 0.85,
+        "q75": 0.93
+      }
+    },
+    {
+      "name": "Time_Band",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 4,
+      "type": "categorical",
+      "top_values": {
+        "Afternoon": 269,
+        "Night": 264,
+        "Morning": 244,
+        "Early Morning": 223
+      }
+    },
+    {
+      "name": "Is_Peak_Hour",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 2,
+      "type": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.266,
+        "std": 0.4421,
+        "q25": 0.0,
+        "q50": 0.0,
+        "q75": 1.0
+      }
+    },
+    {
+      "name": "Is_Daytime",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 2,
+      "type": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.685,
+        "std": 0.4647,
+        "q25": 0.0,
+        "q50": 1.0,
+        "q75": 1.0
+      }
+    },
+    {
+      "name": "Exceeds_Limit",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 2,
+      "type": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.421,
+        "std": 0.494,
+        "q25": 0.0,
+        "q50": 0.0,
+        "q75": 1.0
+      }
+    },
+    {
+      "name": "Congestion_Index",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 375,
+      "type": "numeric",
+      "stats": {
+        "min": 0.0,
+        "max": 0.98,
+        "mean": 0.4981,
+        "std": 0.2935,
+        "q25": 0.2775,
+        "q50": 0.488,
+        "q75": 0.7325
+      }
+    },
+    {
+      "name": "Noise_Speed_Ratio",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 984,
+      "type": "numeric",
+      "stats": {
+        "min": 0.44,
+        "max": 7.4248,
+        "mean": 1.5999,
+        "std": 0.8159,
+        "q25": 1.0271,
+        "q50": 1.392,
+        "q75": 1.9757
+      }
+    },
+    {
+      "name": "Month",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 12,
+      "type": "numeric",
+      "stats": {
+        "min": 1.0,
+        "max": 12.0,
+        "mean": 6.715,
+        "std": 3.348,
+        "q25": 4.0,
+        "q50": 7.0,
+        "q75": 10.0
+      }
+    },
+    {
+      "name": "Quarter",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique": 4,
+      "type": "numeric",
+      "stats": {
+        "min": 1.0,
+        "max": 4.0,
+        "mean": 2.566,
+        "std": 1.0995,
+        "q25": 2.0,
+        "q50": 3.0,
+        "q75": 4.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "total_records": 1000,
+  "cities_covered": 8,
+  "date_range": {
+    "start": "2022-01-04",
+    "end": "2025-12-31"
+  },
+  "noise_level": {
+    "min": 30.0,
+    "max": 102.3,
+    "mean": 60.93,
+    "median": 59.75,
+    "std": 14.34
+  },
+  "pct_exceeds_normative": 42.1,
+  "pct_peak_hour": 26.6,
+  "classification_dist": {
+    "Moderado": 316,
+    "Alto": 247,
+    "Bajo": 236,
+    "Crítico": 201
+  },
+  "noise_source_dist": {
+    "Tráfico_Vehicular": 346,
+    "Transporte_Público": 217,
+    "Comercio": 156,
+    "Construcción": 108,
+    "Eventos": 71,
+    "Industrial": 59,
+    "Mixta": 43
+  },
+  "sensor_type_dist": {
+    "Sensor_Fijo": 601,
+    "Sensor_Móvil": 265,
+    "Sensor_Ciudadano": 134
+  },
+  "zone_type_dist": {
+    "Residencial": 368,
+    "Comercial": 274,
+    "Mixta": 162,
+    "Industrial": 102,
+    "Hospitalaria": 55,
+    "Educativa": 39
+  }
+}

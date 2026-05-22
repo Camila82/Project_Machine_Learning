@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="fade-in-up">
+    <h1 class="page-title">Data <span class="text-gradient">Engineering</span></h1>
+    <p class="page-subtitle">Transformations, Feature Engineering, and Preparation for Machine Learning.</p>
+</header>
+
+<section class="grid-2 fade-in-up delay-1" style="margin-bottom: 2rem;">
+    <div class="glass-card">
+        <div class="card-icon"><i class="fa-solid fa-broom"></i></div>
+        <h3>1. Data Cleaning & Null Handling</h3>
+        <p style="color: var(--text-muted); text-align: justify; margin-bottom: 1rem;">
+            The initial dataset consisted of 1,000 raw acoustic records. A rigorous data quality assessment revealed 
+            <strong>0 missing values</strong> across all columns, indicating high-fidelity sensor captures.
+        </p>
+        <ul style="color: var(--text-muted); padding-left: 1rem;">
+            <li style="margin-bottom: 0.5rem;"><strong>Format Standardization:</strong> Datetime columns were parsed, and Latin character encodings (ISO-8859-1) were corrected to ensure seamless processing.</li>
+            <li><strong>Anomaly Removal:</strong> Duplicate <code>ID_Registro</code> entries were verified and confirmed to be zero.</li>
+        </ul>
+    </div>
+    
+    <div class="glass-card">
+        <div class="card-icon"><i class="fa-solid fa-code"></i></div>
+        <h3>2. Encoding & Normalization</h3>
+        <p style="color: var(--text-muted); text-align: justify; margin-bottom: 1rem;">
+            Machine Learning algorithms require numerical inputs. Categorical variables were structurally transformed.
+        </p>
+        <ul style="color: var(--text-muted); padding-left: 1rem;">
+            <li style="margin-bottom: 0.5rem;"><strong>Label Encoding:</strong> Categorical features (<code>Tipo_Zona</code>, <code>Fuente_Principal_Ruido</code>) were mapped to integer hierarchies using Scikit-Learn's <code>LabelEncoder</code>.</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Target Ordinal Mapping:</strong> The target variable (<code>Clasificacion_Normativa</code>) was mapped ordinally: <em>Bajo (0) → Moderado (1) → Alto (2) → Crítico (3)</em>.</li>
+            <li><strong>Min-Max Scaling:</strong> Continuous variables like vehicular flow and speeds were scaled between [0,1] to ensure neural network and distance-based model stability.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="fade-in-up delay-2">
+    <div class="glass-card">
+        <h3 style="margin-bottom: 1.5rem;"><i class="fa-solid fa-microchip text-gradient" style="margin-right: 10px;"></i> 3. Feature Engineering</h3>
+        <p style="color: var(--text-muted); text-align: justify; margin-bottom: 2rem;">
+            Raw acoustic data is insufficient to capture complex urban dynamics. Based on Colombian traffic laws and acoustic normatives, <strong>7 new synthetic features</strong> were engineered to improve model predictive power.
+        </p>
+        
+        <div class="grid-3">
+            <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-light);">
+                <h5 style="color: var(--accent-primary);">Time_Band</h5>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;">Categorized 24-hour cycles into 4 strategic bands (Early Morning, Morning, Afternoon, Night) aligning with the MADS regulations.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-light);">
+                <h5 style="color: var(--accent-primary);">Is_Peak_Hour</h5>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;">Binary flag identifying standard Colombian rush hours (07:00-09:00 and 17:00-19:00) where mobility congestion peaks.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-light);">
+                <h5 style="color: var(--accent-primary);">Congestion_Index</h5>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;">A weighted composite metric combining public transport saturation (60%) and the raw mobility index (40%).</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-light);">
+                <h5 style="color: var(--accent-primary);">Exceeds_Limit</h5>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;">Binary target flag indicating if the specific zone surpassed the legal decibel threshold established by Resolution 627/2006.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-light);">
+                <h5 style="color: var(--accent-primary);">Noise_Speed_Ratio</h5>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;">The ratio of generated dB to average vehicle speed, isolating noise generated by engine idling vs. high-speed transit.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-light);">
+                <h5 style="color: var(--accent-primary);">Temporal Seasonality</h5>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: justify;">Extraction of <code>Month</code> and <code>Quarter</code> variables to allow tree-based algorithms to detect seasonal noise spikes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

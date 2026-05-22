@@ -1,0 +1,86 @@
+{
+  "Comercial": {
+    "total_measurements": 274,
+    "avg_noise_db": 69.43,
+    "max_noise_db": 94.3,
+    "pct_exceeds_normative": 69.71,
+    "day_limit_db": 70,
+    "night_limit_db": 60,
+    "classification_dist": {
+      "Alto": 83,
+      "Moderado": 73,
+      "Crítico": 60,
+      "Bajo": 58
+    }
+  },
+  "Educativa": {
+    "total_measurements": 39,
+    "avg_noise_db": 52.19,
+    "max_noise_db": 77.5,
+    "pct_exceeds_normative": 17.95,
+    "day_limit_db": 65,
+    "night_limit_db": 55,
+    "classification_dist": {
+      "Bajo": 16,
+      "Moderado": 9,
+      "Crítico": 8,
+      "Alto": 6
+    }
+  },
+  "Hospitalaria": {
+    "total_measurements": 55,
+    "avg_noise_db": 49.41,
+    "max_noise_db": 64.3,
+    "pct_exceeds_normative": 38.18,
+    "day_limit_db": 55,
+    "night_limit_db": 45,
+    "classification_dist": {
+      "Crítico": 26,
+      "Moderado": 18,
+      "Alto": 9,
+      "Bajo": 2
+    }
+  },
+  "Industrial": {
+    "total_measurements": 102,
+    "avg_noise_db": 80.95,
+    "max_noise_db": 102.3,
+    "pct_exceeds_normative": 81.37,
+    "day_limit_db": 75,
+    "night_limit_db": 70,
+    "classification_dist": {
+      "Moderado": 34,
+      "Crítico": 29,
+      "Alto": 26,
+      "Bajo": 13
+    }
+  },
+  "Mixta": {
+    "total_measurements": 162,
+    "avg_noise_db": 65.52,
+    "max_noise_db": 89.2,
+    "pct_exceeds_normative": 54.32,
+    "day_limit_db": 68,
+    "night_limit_db": 58,
+    "classification_dist": {
+      "Moderado": 49,
+      "Alto": 47,
+      "Crítico": 44,
+      "Bajo": 22
+    }
+  },
+  "Residencial": {
+    "total_measurements": 368,
+    "avg_noise_db": 49.69,
+    "max_noise_db": 70.4,
+    "pct_exceeds_normative": 8.42,
+    "day_limit_db": 65,
+    "night_limit_db": 55,
+    "classification_dist": {
+      "Moderado": 133,
+      "Bajo": 125,
+      "Alto": 76,
+      "Crítico": 34
+    }
+  }
+}

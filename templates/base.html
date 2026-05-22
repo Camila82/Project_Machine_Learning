@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Noise AI | ML Dashboard</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fa-solid fa-wave-square"></i>
+                    <span>Acoustic<span class="text-gradient">AI</span></span>
+                </div>
+            </div>
+            
+            <nav class="nav-links">
+                <div class="nav-section-title">Overview</div>
+                <li class="nav-item">
+                    <a href="{{ url_for('main.index') }}" class="nav-link {% if request.endpoint == 'main.index' %}active{% endif %}">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('main.methodology') }}" class="nav-link {% if request.endpoint == 'main.methodology' %}active{% endif %}">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <span>Methodology</span>
+                    </a>
+                </li>
+
+                <div class="nav-section-title">Phase 1: Strategy</div>
+                <li class="nav-item">
+                    <a href="{{ url_for('business.understanding') }}" class="nav-link {% if request.endpoint == 'business.understanding' %}active{% endif %}">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <span>Business Logic</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('data.understanding') }}" class="nav-link {% if request.endpoint == 'data.understanding' %}active{% endif %}">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Data Analysis</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('data.engineering') }}" class="nav-link {% if request.endpoint == 'data.engineering' %}active{% endif %}">
+                        <i class="fa-solid fa-server"></i>
+                        <span>Engineering</span>
+                    </a>
+                </li>
+
+                <div class="nav-section-title">Phase 2: Agents</div>
+<li class="nav-item">
+    <a href="{{ url_for('rl.concepts') }}" class="nav-link {% if request.endpoint == 'rl.concepts' %}active{% endif %}">
+        <i class="fa-solid fa-book"></i>
+        <span>Concepts</span>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{ url_for('rl.application') }}" class="nav-link {% if request.endpoint == 'rl.application' %}active{% endif %}">
+        <i class="fa-solid fa-brain"></i>
+        <span>Smart Traffic Agent</span>
+    </a>
+</li>
+
+                <div class="nav-section-title">Phase 3: Models</div>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled">
+                        <i class="fa-solid fa-microchip"></i>
+                        <span>ML Training</span>
+                    </a>
+                </li>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <button class="mobile-toggle" id="mobile-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            {% block content %}{% endblock %}
+        </main>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html>

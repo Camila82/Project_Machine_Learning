@@ -1,0 +1,194 @@
+{
+  "0": {
+    "total_measurements": 32,
+    "avg_noise_db": 46.52,
+    "max_noise_db": 74.3,
+    "time_band": "Early Morning",
+    "pct_critical": 0.0,
+    "is_peak": false
+  },
+  "1": {
+    "total_measurements": 43,
+    "avg_noise_db": 49.93,
+    "max_noise_db": 73.7,
+    "time_band": "Early Morning",
+    "pct_critical": 0.0,
+    "is_peak": false
+  },
+  "2": {
+    "total_measurements": 38,
+    "avg_noise_db": 48.63,
+    "max_noise_db": 67.4,
+    "time_band": "Early Morning",
+    "pct_critical": 0.0,
+    "is_peak": false
+  },
+  "3": {
+    "total_measurements": 34,
+    "avg_noise_db": 51.8,
+    "max_noise_db": 76.5,
+    "time_band": "Early Morning",
+    "pct_critical": 0.0,
+    "is_peak": false
+  },
+  "4": {
+    "total_measurements": 44,
+    "avg_noise_db": 50.58,
+    "max_noise_db": 72.7,
+    "time_band": "Early Morning",
+    "pct_critical": 0.0,
+    "is_peak": false
+  },
+  "5": {
+    "total_measurements": 32,
+    "avg_noise_db": 52.56,
+    "max_noise_db": 72.6,
+    "time_band": "Early Morning",
+    "pct_critical": 0.0,
+    "is_peak": false
+  },
+  "6": {
+    "total_measurements": 36,
+    "avg_noise_db": 51.02,
+    "max_noise_db": 76.3,
+    "time_band": "Morning",
+    "pct_critical": 0.0,
+    "is_peak": false
+  },
+  "7": {
+    "total_measurements": 48,
+    "avg_noise_db": 68.85,
+    "max_noise_db": 89.4,
+    "time_band": "Morning",
+    "pct_critical": 45.83,
+    "is_peak": true
+  },
+  "8": {
+    "total_measurements": 35,
+    "avg_noise_db": 71.76,
+    "max_noise_db": 102.3,
+    "time_band": "Morning",
+    "pct_critical": 40.0,
+    "is_peak": true
+  },
+  "9": {
+    "total_measurements": 45,
+    "avg_noise_db": 70.4,
+    "max_noise_db": 101.2,
+    "time_band": "Morning",
+    "pct_critical": 48.89,
+    "is_peak": true
+  },
+  "10": {
+    "total_measurements": 45,
+    "avg_noise_db": 64.9,
+    "max_noise_db": 87.7,
+    "time_band": "Morning",
+    "pct_critical": 20.0,
+    "is_peak": false
+  },
+  "11": {
+    "total_measurements": 35,
+    "avg_noise_db": 63.97,
+    "max_noise_db": 85.6,
+    "time_band": "Morning",
+    "pct_critical": 17.14,
+    "is_peak": false
+  },
+  "12": {
+    "total_measurements": 51,
+    "avg_noise_db": 64.41,
+    "max_noise_db": 92.8,
+    "time_band": "Afternoon",
+    "pct_critical": 13.73,
+    "is_peak": false
+  },
+  "13": {
+    "total_measurements": 40,
+    "avg_noise_db": 63.33,
+    "max_noise_db": 89.1,
+    "time_band": "Afternoon",
+    "pct_critical": 10.0,
+    "is_peak": false
+  },
+  "14": {
+    "total_measurements": 38,
+    "avg_noise_db": 63.2,
+    "max_noise_db": 97.0,
+    "time_band": "Afternoon",
+    "pct_critical": 31.58,
+    "is_peak": false
+  },
+  "15": {
+    "total_measurements": 45,
+    "avg_noise_db": 62.84,
+    "max_noise_db": 85.0,
+    "time_band": "Afternoon",
+    "pct_critical": 15.56,
+    "is_peak": false
+  },
+  "16": {
+    "total_measurements": 41,
+    "avg_noise_db": 64.64,
+    "max_noise_db": 93.0,
+    "time_band": "Afternoon",
+    "pct_critical": 24.39,
+    "is_peak": false
+  },
+  "17": {
+    "total_measurements": 54,
+    "avg_noise_db": 69.58,
+    "max_noise_db": 91.2,
+    "time_band": "Afternoon",
+    "pct_critical": 55.56,
+    "is_peak": true
+  },
+  "18": {
+    "total_measurements": 44,
+    "avg_noise_db": 71.28,
+    "max_noise_db": 91.9,
+    "time_band": "Night",
+    "pct_critical": 54.55,
+    "is_peak": true
+  },
+  "19": {
+    "total_measurements": 40,
+    "avg_noise_db": 75.83,
+    "max_noise_db": 99.3,
+    "time_band": "Night",
+    "pct_critical": 70.0,
+    "is_peak": true
+  },
+  "20": {
+    "total_measurements": 41,
+    "avg_noise_db": 60.22,
+    "max_noise_db": 77.1,
+    "time_band": "Night",
+    "pct_critical": 2.44,
+    "is_peak": false
+  },
+  "21": {
+    "total_measurements": 47,
+    "avg_noise_db": 57.75,
+    "max_noise_db": 90.9,
+    "time_band": "Night",
+    "pct_critical": 6.38,
+    "is_peak": false
+  },
+  "22": {
+    "total_measurements": 44,
+    "avg_noise_db": 60.04,
+    "max_noise_db": 85.1,
+    "time_band": "Night",
+    "pct_critical": 0.0,
+    "is_peak": false
+  },
+  "23": {
+    "total_measurements": 48,
+    "avg_noise_db": 48.97,
+    "max_noise_db": 75.8,
+    "time_band": "Night",
+    "pct_critical": 4.17,
+    "is_peak": false
+  }
+}

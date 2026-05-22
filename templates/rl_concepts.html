@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="fade-in-up">
+    <h1 class="page-title">Reinforcement <span class="text-gradient">Learning</span></h1>
+    <p class="page-subtitle">Core concepts behind autonomous intelligent decision-making systems.</p>
+</header>
+
+<section class="grid-3 fade-in-up delay-1" style="margin-bottom: 2rem;">
+    <div class="glass-card">
+        <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+        <h4>Reinforcement Learning (RL)</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">A paradigm where an agent learns to behave in an environment by performing actions and seeing the results in the form of rewards or penalties.</p>
+    </div>
+    <div class="glass-card">
+        <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+        <h4>The Intelligent Agent</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">The entity that makes decisions. It perceives the environment, performs actions, and updates its policy based on the feedback received.</p>
+    </div>
+    <div class="glass-card">
+        <div class="card-icon"><i class="fa-solid fa-globe"></i></div>
+        <h4>Environment & States</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">The physical or virtual world the agent inhabits. A "state" is a specific condition or configuration of the environment at a given time.</p>
+    </div>
+</section>
+
+<section class="glass-card fade-in-up delay-2">
+    <h3>Key Mechanisms</h3>
+    <div class="grid-2" style="margin-top: 2rem;">
+        <div>
+            <h5 style="color: var(--accent-primary);">Exploration vs. Exploitation</h5>
+            <p style="color: var(--text-muted); font-size: 0.9rem; text-align: justify;">The fundamental dilemma in RL. Should the agent try new, unknown actions (exploration) or stick to what it knows has worked before (exploitation)? A balance is required for optimal learning.</p>
+        </div>
+        <div>
+            <h5 style="color: var(--accent-secondary);">Reward Policy</h5>
+            <p style="color: var(--text-muted); font-size: 0.9rem; text-align: justify;">The policy is the agent's strategy—the mapping from states to actions. The "reward" is the numerical signal that tells the agent if its action was desirable or not.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
